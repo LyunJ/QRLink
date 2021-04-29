@@ -21,3 +21,5 @@ let urlArray = new Array();
     urlArray.push({ favIconUrl: favIconUrl, url: url });
   });
 })();
+
+(function addUser() {})();

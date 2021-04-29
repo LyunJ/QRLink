@@ -6,25 +6,21 @@
     "background":{
         "service_worker":"firebase.js"
     },
-    "content_scripts":[
-        {
-            "matches" : ["<all_urls>"],
-            "js":["app.js"],
-            "run_at":"document_end"
-        }
-        
-
-    ],
     "permissions":[
         "activeTab",
         "tabs",
         "storage",
-        "scripting"
+        "scripting",
+        "identity"
     ],
     "host_permissions":[
         "<all_urls>"
     ],
     "action":{
         "default_popup":"popup.html"
+    },
+    "oauth2":{
+        "client_id":"797775261594-ps4f2aks5crsbighonej54g26ekkunpk.apps.googleusercontent.com",
+        "scopes":["openid", "email", "profile"]
     }
 }
