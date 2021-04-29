@@ -1,8 +1,8 @@
 let linkList = document.getElementById("url-list");
+let urlArray = new Array();
 
 (async function drawLinkList() {
   let links = await chrome.tabs.query({});
-  console.log(links);
   links.forEach(({ favIconUrl, url }) => {
     const div = document.createElement("div");
     const img = document.createElement("img");
@@ -17,5 +17,7 @@ let linkList = document.getElementById("url-list");
     div.appendChild(img);
     div.appendChild(a);
     linkList.appendChild(div);
+
+    urlArray.push({ favIconUrl: favIconUrl, url: url });
   });
 })();
