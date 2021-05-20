@@ -1,7 +1,7 @@
 let linkList = document.getElementById("url-list");
 let urlArray = new Array();
-
-(async function drawLinkList() {
+let sendButton = document.querySelector("#url-send-button");
+(async function drawLinkListAndAddEventListener() {
   let links = await chrome.tabs.query({});
   links.forEach(({ favIconUrl, url }) => {
     const div = document.createElement("div");
@@ -20,6 +20,10 @@ let urlArray = new Array();
 
     urlArray.push({ favIconUrl: favIconUrl, url: url });
   });
+  sendButton.addEventListener("click", function () {
+    chrome.runtime.sendMessage({
+      command: "sendUrls",
+      data: urlArray,
+    });
+  });
 })();
-
-(function addUser() {})();
